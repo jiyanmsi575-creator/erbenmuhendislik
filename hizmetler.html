@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hizmetler | Erben Mühendislik</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: #222;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        header h1 {
+            color: #ff4500;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff0000;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #ff4500;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            border: 2px solid #ff4500;
+            border-radius: 12px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .service-card h3 {
+            color: #ff4500;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .service-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4500;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .service-btn:hover {
+            background-color: #ff0000;
+        }
+
+        footer {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        footer span {
+            color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Erben Mühendislik</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="hakkimizda.html">Hakkımızda</a>
+            <a href="hizmetler.html">Hizmetler</a>
+            <a href="projeler.html">Projeler</a>
+            <a href="iletisim.html">İletişim</a>
+        </nav>
+    </header>
+
+    <section class="content">
+        <h2>Hizmetlerimiz</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>Endüstriyel Otomasyon</h3>
+                <p>Endüstriyel tesisleriniz için otomasyon çözümleri tasarlıyor, uyguluyor ve bakımını sağlıyoruz.</p>
+                <a href="endustriyel.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Elektrik & Elektronik Sistemleri</h3>
+                <p>Proje tasarımı, montaj ve bakım hizmetleriyle elektrik ve elektronik sistemlerinizi yönetiyoruz.</p>
+                <a href="elektrik.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Enerji Verimliliği</h3>
+                <p>Enerji tasarrufu sağlayan çözümler sunuyor, maliyetleri azaltırken çevresel etkileri minimize ediyoruz.</p>
+                <a href="enerji.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Yapı & İnşaat</h3>
+                <p>Yapı projelerinizin tasarım, planlama ve uygulama süreçlerinde güvenli, kaliteli ve zamanında teslim sağlıyoruz.</p>
+                <a href="yapi.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Yazılım ve Proje Çizimi Desteği</h3>
+                <p>Endüstriyel ve kurumsal yazılım çözümleri geliştirme ve proje çizimi desteği sunuyoruz.</p>
+                <a href="yazilim.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Saha Uygulamaları</h3>
+                <p>Montaj, kurulum ve test hizmetleri ile sahadaki tüm projelerinizin sorunsuz çalışmasını sağlıyoruz.</p>
+                <a href="saha.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Ar-Ge & İnovasyon</h3>
+                <p>Yenilikçi çözümler ve prototip geliştirme hizmetleri ile projelerinizi bir adım öne taşıyoruz.</p>
+                <a href="arge.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Mühendislik Eğitimleri</h3>
+                <p>Personel ve müşteriler için teknik eğitimler sunarak bilgi ve beceri gelişimini destekliyoruz.</p>
+                <a href="egitim.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Teknik Danışmanlık</h3>
+                <p>Projelerinizin her aşamasında uzman mühendislerimizden danışmanlık alabilir, riskleri en aza indirebilirsiniz.</p>
+                <a href="danismanlik.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Bina Otomasyonu</h3>
+                <p>Akıllı bina sistemleri ile enerji yönetimi, güvenlik ve konforu optimize ediyoruz.</p>
+                <a href="bina.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Yenilenebilir Enerji Çözümleri</h3>
+                <p>Güneş ve rüzgar enerjisi projeleri ile sürdürülebilir enerji kullanımını sağlıyoruz.</p>
+                <a href="yenilenebilir.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+            <div class="service-card">
+                <h3>Endüstriyel Veri Analitiği</h3>
+                <p>Tesislerinizin verilerini analiz ederek üretim verimliliğini ve karar süreçlerini güçlendiriyoruz.</p>
+                <a href="veri-analitik.html" class="service-btn">Detaylı Bilgi</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 <span>Erben Mühendislik</span> | Tüm hakları saklıdır.
+    </footer>
+</body>
+</html>

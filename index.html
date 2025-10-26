@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Erben Mühendislik — Güvenilir Mühendislik Çözümleri</title>
+<meta name="description" content="Erben Mühendislik — Endüstriyel otomasyon, bina otomasyonu, enerji verimliliği ve teknik danışmanlık." />
+<link rel="icon" href="img/favicon.ico" />
+<style>
+  /* ---------- Varsayılan ve renk paleti ---------- */
+  :root{
+    --bg: #000000;           /* siyah arka plan */
+    --kan: #b30000;          /* kan kırmızısı vurgu */
+    --alt: #ffb700;          /* altın sarısı vurgular */
+    --mavi: #1E90FF;         /* parlak mavi vurgular */
+    --muted: #e6e6e6;        /* ekran için okunur ama saf beyaz değil */
+    --card: #0f0f0f;         /* kart arka plan */
+    --glass: rgba(255,255,255,0.04);
+    --radius: 12px;
+    --shadow: 0 12px 30px rgba(0,0,0,0.6);
+    --transition: 300ms cubic-bezier(.2,.9,.2,1);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--muted);
+    font-family: "Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  /* ---------- HEADER ---------- */
+  header.site-header{
+    position:fixed;
+    inset:0 0 auto 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 40px;
+    z-index:1200;
+    background: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.06));
+    backdrop-filter: blur(6px);
+    transition: all 240ms ease;
+  }
+  header.site-header.scrolled{
+    background: linear-gradient(rgb(0,0,0), rgb(0,0,0));
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  }
+  .brand{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    cursor:pointer;
+  }
+  .brand .logo{
+    width:44px;height:44px;border-radius:8px;
+    background: linear-gradient(135deg,var(--kan), #8b0000);
+    box-shadow: 0 6px 18px rgba(179,0,0,0.25);
+    display:flex;align-items:center;justify-content:center;color:var(--alt);
+    font-weight:700;font-size:18px;
+  }
+  .brand h1{font-size:18px;color:var(--alt);margin:0}
+  nav.primary{
+    display:flex;gap:22px;align-items:center;
+  }
+  nav.primary a{
+    color:var(--muted); text-decoration:none; font-weight:600; font-size:14px;
+    transition: color var(--transition);
+  }
+  nav.primary a:hover{ color:var(--mavi) }
+
+  /* Hamburger (mobile) */
+  .hamburger{display:none; width:44px;height:44px;align-items:center;justify-content:center;border-radius:8px;background:var(--glass); cursor:pointer}
+  .hamburger .bar{width:20px;height:2px;background:var(--muted);box-shadow:0 6px 0 var(--muted),0 -6px 0 var(--muted);}
+
+  /* ---------- HERO / SLIDER ---------- */
+  .hero{
+    width:100%;
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .slides{
+    display:flex;
+    width:400%;
+    height:100%;
+    animation: slideX 20s linear infinite;
+  }
+  .slide{
+    width:100%;
+    height:100vh;
+    position:relative;
+    flex:1 0 100%;
+    display:block;
+  }
+  .slide img{
+    width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.5) contrast(1.05);
+    transform: scale(1.02);
+  }
+  @keyframes slideX{
+    0%{transform:translateX(0)}
+    20%{transform:translateX(0)}
+    25%{transform:translateX(-100%)}
+    45%{transform:translateX(-100%)}
+    50%{transform:translateX(-200%)}
+    70%{transform:translateX(-200%)}
+    75%{transform:translateX(-300%)}
+    100%{transform:translateX(-300%)}
+  }
+
+  /* Hero content */
+  .hero-inner{
+    position:absolute;
+    z-index:6;
+    text-align:center;
+    width:min(1100px,calc(100% - 120px));
+    padding:40px;
+    border-radius:16px;
+    transform: translateY(-10px);
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.12));
+    border: 1px solid rgba(255,255,255,0.03);
+  }
+  .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.03);color:var(--alt);font-weight:700;margin-bottom:14px}
+  .hero-inner h2{
+    font-size: clamp(28px, 4vw, 48px);
+    color:var(--alt);
+    letter-spacing: -0.6px;
+    line-height:1.02;
+    margin:6px 0 12px;
+    text-shadow: 0 10px 30px rgba(179,0,0,0.08);
+    transform-origin:center;
+    animation: pop 800ms cubic-bezier(.2,.8,.2,1) 400ms both;
+  }
+  .hero-inner p{
+    color:var(--muted); font-size:16px; max-width:800px; margin:0 auto 18px;
+  }
+  .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;border:0;
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  }
+  .btn-primary{ background: linear-gradient(90deg,var(--kan), #8b0000); color:var(--alt); box-shadow: 0 8px 30px rgba(179,0,0,0.18) }
+  .btn-primary:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(179,0,0,0.28) }
+  .btn-ghost{ background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--muted) }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.02); color:var(--mavi) }
+
+  @keyframes pop{ from{opacity:0; transform: translateY(10px) scale(0.98)} to{opacity:1; transform:none} }
+
+  /* ---------- SECTIONS (cards) ---------- */
+  main{position:relative;z-index:2}
+  .container{max-width:1200px;margin:0 auto;padding:60px 20px}
+  h3.section-title{color:var(--alt);font-size:22px;margin-bottom:18px;text-align:center}
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap:22px;
+  }
+  .service{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    border-radius:12px;
+    padding:20px;
+    border-top:4px solid var(--kan);
+    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  }
+  .service:hover{ transform:translateY(-8px); box-shadow: 0 28px 60px rgba(0,0,0,0.6) }
+  .service h4{ color:var(--alt); margin:0 0 8px; font-size:18px }
+  .service p{ color:var(--muted); margin:0 0 12px; font-size:14px }
+  .service a{ color:var(--kan); font-weight:700; text-decoration:none }
+
+  /* small info strip */
+  .infostrip{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;padding:18px;background:linear-gradient(90deg, rgba(255,183,0,0.06), rgba(179,0,0,0.03));border-radius:10px;margin-top:18px}
+  .infostrip a{color:var(--alt);font-weight:700}
+
+  /* ---------- COPILOT (contact mini) ---------- */
+  .copilot{
+    max-width:900px;margin:26px auto 8px;padding:18px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(0,0,0,0.06));border:1px solid rgba(255,255,255,0.03)
+  }
+  .copilot form{display:flex;gap:12px;flex-wrap:wrap}
+  .copilot input,.copilot textarea{
+    flex:1 1 300px;background:transparent;border:1px solid rgba(255,255,255,0.06);padding:12px;border-radius:8px;color:var(--muted)
+  }
+  .copilot button{ background:var(--kan); color:var(--alt); padding:10px 16px;border-radius:8px;border:0;font-weight:700;cursor:pointer }
+  .copilot small{display:block;color:rgba(230,230,230,0.7);margin-top:8px}
+
+  /* ---------- FOOTER ---------- */
+  footer.site-footer{
+    padding:40px 20px;background:linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.98));color:var(--muted);
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+  .footer-grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;align-items:flex-start}
+  .footer-grid .col{min-width:200px;max-width:420px}
+  .small{font-size:13px;color:rgba(230,230,230,0.6)}
+
+  /* responsive */
+  @media (max-width:900px){
+    header.site-header{padding:12px 18px}
+    .hero-inner{padding:24px}
+    .hero-inner h2{font-size:26px}
+  }
+  @media (max-width:640px){
+    nav.primary{display:none}
+    .hamburger{display:flex}
+    .slides{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" id="siteHeader">
+  <div class="brand" onclick="location.href='index.html'">
+    <div class="logo">E</div>
+    <h1>Erben Mühendislik</h1>
+  </div>
+
+  <nav class="primary" aria-label="Ana Menü">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="hakkimizda.html">Hakkımızda</a>
+    <a href="kurumsal.html">Kurumsal</a>
+    <a href="hizmetler.html">Hizmetler</a>
+    <a href="projeler.html">Projeler</a>
+    <a href="haberler.html">Haber & Duyurular</a>
+    <a href="iletisim.html">İletişim</a>
+  </nav>
+
+  <button class="hamburger" aria-label="Menü" id="hamburger" onclick="toggleMobile()">
+    <span class="bar"></span>
+  </button>
+</header>
+
+<!-- HERO / SLIDER -->
+<section class="hero" aria-hidden="false">
+  <div class="slides" id="slides">
+    <!-- Yer tutucu görseller: kendi görsellerini img/slide1.jpg vb ile değiştir -->
+    <div class="slide"><img src="img/slide1.jpg" alt="Endüstriyel Otomasyon"></div>
+    <div class="slide"><img src="img/slide2.jpg" alt="Yapı&İnşaat"></div>
+    <div class="slide"><img src="img/slide3.jpg" alt="Yenilenebilir Enerji"></div>
+    <div class="slide"><img src="img/slide4.jpg" alt="Robotik & IoT"></div>
+  </div>
+
+  <div class="hero-inner" role="region" aria-label="Başlık">
+    <div class="eyebrow">Endüstriyel & Kurumsal Çözümler</div>
+    <h2>Güvenilir Mühendislik — Sürdürülebilir Sonuçlar</h2>
+    <p>Yapı projelerinizin tasarım, planlama ve uygulama süreçlerinde güvenli, kaliteli ve zamanında teslim sağlıyoruz..</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="location.href='iletisim.html'">Teklif İste</button>
+      <button class="btn btn-ghost" onclick="location.href='hizmetler.html'">Hizmetlerimiz</button>
+      <a class="btn btn-ghost" href="https://wa.me/905532200935?text=Merhaba%20Erben%20Mühendislik,%20size%20ulaşmak%20istiyorum." target="_blank" rel="noopener">WhatsApp ile Yaz</a>
+    </div>
+    <div class="infostrip" style="margin-top:18px">
+      <div class="small">Telefon: <a href="tel:+905532200935" style="color:var(--alt)">+90 553 220 0935</a></div>
+      <div class="small">E-posta: <a href="#" id="emailLink" style="color:var(--alt)">info@erbenmuhendislik.net</a></div>
+      <div class="small">Adres: Hürriyet Mah. Kervan Sok. No:21, Doğubeyazıt / İstanbul</div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<main>
+
+  <!-- HIZMETLER -->
+  <section class="container" id="hizmetler">
+    <h3 class="section-title">Hizmetlerimiz</h3>
+    <div class="grid">
+      <article class="service" onclick="location.href='endustriyel.html'">
+        <h4>Endüstriyel Otomasyon</h4>
+        <p>PLC/SCADA, proses otomasyonu, endüstri 4.0 entegrasyonları ve sahada tam destek.</p>
+        <a href="endustriyel.html">Detaylı İncele →</a>
+      </article>
+
+      <article class="service" onclick="location.href='bina.html'">
+        <h4>Yapı & İnşaat</h4>
+        <p>Yapı projelerinizin tasarım, planlama ve uygulama süreçlerinde güvenli, kaliteli ve zamanında teslim sağlıyoruz.Akıllı bina yönetimi, HVAC kontrol, aydınlatma otomasyonu ve entegrasyon.</p>
+        <a href="yapi.html">Detaylı İncele →</a>
+      </article>
+
+      <article class="service" onclick="location.href='yenilenebilir.html'">
+        <h4>Yenilenebilir Enerji</h4>
+        <p>Güneş, rüzgar çözümleri; enerji depolama ve verimlilik danışmanlığı.</p>
+        <a href="yenilenebilir.html">Detaylı İncele →</a>
+      </article>
+
+      <article class="service" onclick="location.href='veri-analitik.html'">
+        <h4>Endüstriyel Veri Analitiği</h4>
+        <p>Veri toplama, analiz, KPI dashboard’ları ve gelişmiş raporlama.</p>
+        <a href="veri-analitik.html">Detaylı İncele →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- KURUMSAL ÖZET -->
+  <section class="container" id="kurumsal">
+    <h3 class="section-title">Kurumsal</h3>
+    <div class="grid">
+      <div class="service" onclick="location.href='kurumsal.html#tarihce'">
+        <h4>Tarihçemiz</h4>
+        <p>Kısa bir bakış: kuruluşumuzdan bugüne, önemli kilometre taşlarımız.</p>
+        <a href="kurumsal.html#tarihce">Detaylı →</a>
+      </div>
+      <div class="service" onclick="location.href='kurumsal.html#sertifikalar'">
+        <h4>Sertifikalarımız</h4>
+        <p>ISO, kalite ve sektörel uygunluk sertifikalarımız.</p>
+        <a href="kurumsal.html#sertifikalar">Detaylı →</a>
+      </div>
+      <div class="service" onclick="location.href='kurumsal.html#cozumortaklari'">
+        <h4>Çözüm Ortakları</h4>
+        <p>Teknoloji ve tedarik ortaklarımızla güçlü iş birlikleri.</p>
+        <a href="kurumsal.html#cozumortaklari">Detaylı →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POLİTİKALAR -->
+  <section class="container" id="politikalar">
+    <h3 class="section-title">Politikalarımız</h3>
+    <div class="grid">
+      <div class="service" onclick="location.href='politikalar.html#etik'"><h4>Etik Politikamız</h4><p>Kurum içi etik kurallarımız ve taahhütlerimiz.</p><a href="politikalar.html#etik">Oku →</a></div>
+      <div class="service" onclick="location.href='politikalar.html#cevre'"><h4>Çevre Politikamız</h4><p>Sürdürülebilir uygulamalarımız ve enerji yönetimi yaklaşımımız.</p><a href="politikalar.html#cevre">Oku →</a></div>
+      <div class="service" onclick="location.href='politikalar.html#kalite'"><h4>Kalite Politikamız</h4><p>Kalite süreçlerimiz ve sürekli gelişim uygulamalarımız.</p><a href="politikalar.html#kalite">Oku →</a></div>
+      <div class="service" onclick="location.href='politikalar.html#isguvenligi'"><h4>İş Sağlığı & Güvenliği</h4><p>Çalışanlarımız ve projelerimiz için güvenlik önceliklerimiz.</p><a href="politikalar.html#isguvenligi">Oku →</a></div>
+    </div>
+  </section>
+
+  <!-- HABER & DUYURULAR -->
+  <section class="container" id="haberler">
+    <h3 class="section-title">Haber & Duyurular</h3>
+    <div class="grid">
+      <div class="service" onclick="location.href='haberler.html#basinda'"><h4>Basında Biz</h4><p>Basılı ve dijital medyada yer alan çalışmalarımız.</p><a href="haberler.html#basinda">Oku →</a></div>
+      <div class="service" onclick="location.href='haberler.html#mevzuat'"><h4>Mevzuatlar</h4><p>Sektörü ilgilendiren güncel mevzuat ve rehberler.</p><a href="haberler.html#mevzuat">Oku →</a></div>
+      <div class="service" onclick="location.href='haberler.html#fiyatlistesi'"><h4>Fiyat Listesi</h4><p>Projeler ve hizmetler için örnek fiyatlandırma listeleri.</p><a href="haberler.html#fiyatlistesi">İndir →</a></div>
+      <div class="service" onclick="location.href='haberler.html#makaleler'"><h4>Teknik Makaleler</h4><p>Ar-Ge ve uygulama odaklı teknik yazılarımız.</p><a href="haberler.html#makaleler">Oku →</a></div>
+    </div>
+  </section>
+
+  <!-- COPILOT (Gönderim formu - mailto) -->
+  <section class="container">
+    <div class="copilot" aria-live="polite">
+      <strong style="color:var(--alt)">Copilot — Hızlı Mesaj</strong>
+      <form id="copilotForm" onsubmit="return sendMailViaMailto(event)">
+        <input id="c_name" name="name" placeholder="Adınız / Kurumunuz" required />
+        <input id="c_subject" name="subject" placeholder="Konu (opsiyonel)" />
+        <textarea id="c_message" name="message" placeholder="Mesajınız..." rows="4" required></textarea>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button type="submit" class="btn-primary btn" style="background:var(--kan); color:var(--alt)">E-posta ile Gönder</button>
+          <a href="#" id="waSend" class="btn btn-ghost" onclick="sendViaWhatsApp()">WhatsApp ile Gönder</a>
+        </div>
+      </form>
+      <small>Mesajınız doğrudan e-posta uygulamanıza aktarılacaktır. (Backend yoksa otomatik gönderim için sunucu gerekir)</small>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="col">
+      <strong style="color:var(--alt)">Erben Mühendislik</strong>
+      <p class="small">Hürriyet Mah. Kervan Sok. No:21, Doğubeyazıt / İstanbul</p>
+      <p class="small">Tel: <a href="tel:+905532200935" style="color:var(--alt)">+90 553 220 0935</a> • Fax: 0212 220 0934</p>
+      <p class="small">E: <a href="#" id="footerEmail" style="color:var(--alt)">info@erbenmuhendislik.net</a></p>
+    </div>
+    <div class="col small">
+      <strong style="color:var(--alt)">Hızlı Linkler</strong>
+      <p><a href="hizmetler.html">Hizmetlerimiz</a></p>
+      <p><a href="projeler.html">Projeler</a></p>
+      <p><a href="kurumsal.html">Kurumsal</a></p>
+    </div>
+    <div class="col small">
+      <strong style="color:var(--alt)">Sosyal</strong>
+      <p><a href="#" target="_blank">LinkedIn</a></p>
+      <p><a href="#" target="_blank">YouTube</a></p>
+      <p><a href="#" target="_blank">Instagram</a></p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:18px;font-size:13px;color:rgba(230,230,230,0.6)">
+    © <span id="year"></span> Erben Mühendislik — Tüm hakları saklıdır.
+  </div> 
+
+</footer>
+
+<!-- ---------- SCRIPTS ---------- -->
+<script>
+  // set year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // header scroll effect
+  const hdr = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 20) hdr.classList.add('scrolled'); else hdr.classList.remove('scrolled');
+  });
+
+  // mobile toggle (basic)
+  function toggleMobile(){
+    const nav = document.querySelector('nav.primary');
+    if(nav.style.display === 'flex'){ nav.style.display = 'none'; } else { nav.style.display = 'flex'; nav.style.flexDirection = 'column'; nav.style.background = 'rgba(0,0,0,0.96)'; nav.style.position = 'absolute'; nav.style.right = '18px'; nav.style.top = '68px'; nav.style.padding = '12px'; nav.style.borderRadius = '10px'; }
+  }
+
+  // Copilot: mailto from form
+  function sendMailViaMailto(e){
+    e.preventDefault();
+    const name = encodeURIComponent(document.getElementById('c_name').value || '');
+    const subject = encodeURIComponent(document.getElementById('c_subject').value || 'Web Sitesi İletişim');
+    const message = encodeURIComponent(document.getElementById('c_message').value || '');
+    const to = 'info@erbenmuhendislik.net'; // kullanıcının verdiği adres
+    const body = encodeURIComponent('İsim/Kurum: ') + name + '%0A%0A' + message;
+    // Aç mail uygulamasını
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    return false;
+  }
+ 
+  // Copilot -> WhatsApp
+  function sendViaWhatsApp(){
+    const name = encodeURIComponent(document.getElementById('c_name').value || '');
+    const message = encodeURIComponent(document.getElementById('c_message').value || 'Merhaba, şirketinizle iletişime geçmek istiyorum.');
+    const phone = '905532200935';
+    const text = encodeURIComponent((name ? (name + ' - ') : '') + decodeURIComponent(message));
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  }
+
+  // email "prompt" click on hero (dynamic)
+  document.getElementById('emailLink').addEventListener('click', function(e){
+    e.preventDefault();
+    const isim = prompt('Adınızı girin (opsiyonel):','');
+    const mesaj = prompt('Kısa mesajınızı yazın:','Merhaba, bilgi almak istiyorum.');
+    if(mesaj !== null){
+      const to = 'info@erbenmuhendislik.net';
+      const subject = encodeURIComponent('Web Sitesi İletişim');
+      const body = encodeURIComponent('Ad: ' + (isim||'') + '\n\n' + mesaj);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+  });
+
+  // attach footer email link to same behavior
+  document.getElementById('footerEmail').addEventListener('click', function(e){ e.preventDefault(); document.getElementById('emailLink').click(); });
+
+  // Optional: Pause slider animation on hover for desktop
+  const slidesEl = document.getElementById('slides');
+  let animRunning = true;
+  document.querySelector('.hero').addEventListener('mouseenter', () => {
+    slidesEl.style.animationPlayState = 'paused';
+    animRunning = false;
+  });
+  document.querySelector('.hero').addEventListener('mouseleave', () => {
+    slidesEl.style.animationPlayState = 'running';
+    animRunning = true;
+  });

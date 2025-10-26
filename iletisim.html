@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İletişim | Erben Mühendislik</title>
+<style>
+    body { margin:0; font-family:'Poppins', sans-serif; background-color:#fff; color:#222; }
+    header { background-color:#000; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:15px 50px; position:sticky; top:0; z-index:100; }
+    header h1 { color:#ff4500; margin:0; }
+    nav a { color:white; text-decoration:none; margin-left:20px; font-weight:500; transition: color 0.3s; }
+    nav a:hover { color:#ff0000; }
+
+    .contact-section { max-width:900px; margin:60px auto; padding:20px; }
+    h2 { color:#ff4500; margin-bottom:20px; }
+    p, a { font-size:1rem; line-height:1.6; color:#222; text-decoration:none; }
+    a.contact-link { display:block; margin-bottom:10px; color:#000; font-weight:500; transition: color 0.3s; }
+    a.contact-link:hover { color:#ff4500; }
+
+    .copilot { margin-top:40px; padding:20px; background:#f5f5f5; border-left:4px solid #ff4500; border-radius:8px; }
+    .copilot h3 { margin-top:0; color:#ff4500; }
+    footer { background-color:#111; color:white; text-align:center; padding:20px; margin-top:60px; }
+    footer span { color:#ff4500; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Erben Mühendislik</h1>
+<nav>
+<a href="index.html">Ana Sayfa</a>
+<a href="hakkimizda.html">Hakkımızda</a>
+<a href="hizmetler.html">Hizmetler</a>
+<a href="projeler.html">Projeler</a>
+<a href="iletisim.html">İletişim</a>
+</nav>
+</header>
+
+<section class="contact-section">
+<h2>İletişim Bilgileri</h2>
+
+<a href="https://wa.me/905532200935?text=Merhaba%20Erben%20Mühendislik,%20size%20ulaşmak%20istiyorum." class="contact-link" target="_blank">📞 +90 553 220 0935 (WhatsApp & Ara)</a>
+
+<a href="tel:02122200935" class="contact-link">📞 0212 220 0935</a>
+<p>📠 Fax: 0212 220 0934</p>
+<a href="#" id="emailLink" class="contact-link">📧 info@erbenmuhendislik.net</a>
+<head>
+  <meta charset="UTF-8">
+  <title>E-posta Bağlantısı</title>
+</head>
+<body>
+
+  <p>
+    Bize ulaşmak için 
+    <a href="mailto:info@erbenmuhendislik.net">info@erbenmuhendislik.net</a>
+    (tıklayınca e-posta gönderir)
+  </p>
+
+</body>
+
+<script>
+document.getElementById('emailLink').addEventListener('click', function(e){
+  e.preventDefault();
+  var isim = prompt("Adınızı girin (isteğe bağlı):", "");
+  var mesaj = prompt("Mesajınızı yazın:", "Merhaba, şirketinizle iletişime geçmek istiyorum.");
+  if (mesaj !== null) {
+    var email = "info@erbenmuhendislik.net";
+    var subject = "Web Sitesi İletişim";
+    var body = "Ad: " + (isim || "") + "%0A%0A" + encodeURIComponent(mesaj);
+    window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + body;
+  }
+});
+</script>
+<p>📍 Adres: Hürriyet Mahallesi Kervan Sokak No:21, Doğubeyazıt / İstanbul</p>
+</section>
+
+<div class="copilot">
+<h3>Copilot - Mesaj Gönder</h3>
+<p>Buraya mesajınızı yazabilirsiniz, bizimle hızlıca iletişime geçin:</p>
+<form id="copilotForm">
+    <input type="text" id="name" placeholder="Adınız" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;">
+    <textarea id="message" placeholder="Mesajınız" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:5px; border:1px solid #ccc;" rows="4"></textarea>
+    <button type="submit" style="padding:10px 20px; background-color:#ff4500; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:500;">Gönder</button>
+</form>
+</div>
+
+<script>
+document.getElementById('copilotForm').addEventListener('submit', function(e){
+    e.preventDefault(); // sayfa yenilenmesin
+    var name = document.getElementById('name').value;
+    var message = document.getElementById('message').value;
+    alert("Mesajınız gönderildi!\n\nAd: " + name + "\nMesaj: " + message);
+    document.getElementById('copilotForm').reset();
+});
+</script>
+
+</section>
+<head
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erben Mühendislik</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #000;
+        }
+
+        header {
+            background-color: #000000f6;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        header h1 {
+            color: #ff4500;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff0000;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0273fc, #ff4500);
+            color: rgb(9, 13, 249);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        footer {
+            background-color: #000000;
+            color: rgb(101, 1, 241);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer span {
+            color: #e30303;
+        }
+    </style>
+</head>
+<section class="hero">
+        <h2>Güvenilir Çözümler, Mühendisliğin Gücüyle</h2>
+        <p>Erben Mühendislik – Yenilikçi, güvenli ve sürdürülebilir projeler için yanınızdayız.</p>
+    </section>
+
+
+<footer>
+© 2025 <span>Erben Mühendislik</span> | Tüm hakları saklıdır.
+</footer>
+
+</body>
+</html>

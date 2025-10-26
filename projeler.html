@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeler | Erben Mühendislik</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #fff;
+        color: #222;
+    }
+    header {
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 50px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    header h1 { color: #ff4500; margin: 0; }
+    nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    nav a:hover { color: #ff0000; }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 50px;
+    }
+
+    .project-card {
+        background-color: #000;
+        color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .project-card img {
+        width: 100%;
+        display: block;
+        transition: transform 0.3s;
+    }
+
+    .project-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .project-card-content {
+        padding: 20px;
+    }
+
+    .project-card-content h3 {
+        color: #ff4500;
+        margin-top: 0;
+    }
+
+    .project-card-content p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .project-btn {
+        display: inline-block;
+        padding: 10px 18px;
+        background-color: #ff4500;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .project-btn:hover { background-color: #ff0000; }
+
+    footer {
+        background-color: #111;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    footer span { color: #ff4500; }
+
+    @media (max-width: 768px) {
+        header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+        nav { margin-top: 10px; }
+        nav a { margin-left: 0; margin-right: 15px; }
+        .project-grid { padding: 20px; gap: 20px; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Erben Mühendislik</h1>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="hakkimizda.html">Hakkımızda</a>
+        <a href="hizmetler.html">Hizmetler</a>
+        <a href="projeler.html">Projeler</a>
+        <a href="iletisim.html">İletişim</a>
+    </nav>
+</header>
+
+<section class="project-grid">
+    <!-- Proje 1 -->
+    <div class="project-card">
+        <img src="img/proje1.jpg" alt="Proje 1">
+        <div class="project-card-content">
+            <h3>Endüstriyel Otomasyon Projesi</h3>
+            <p>Üretim hattı otomasyon sistemi ile verimlilik %30 artırıldı.</p>
+            <a href="proje1.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+    <!-- Proje 2 -->
+    <div class="project-card">
+        <img src="img/proje2.jpg" alt="Proje 2">
+        <div class="project-card-content">
+            <h3>Yapı&inşaat Projesi</h3>
+            <p>Yapı projelerinizin tasarım, planlama ve uygulama süreçlerinde güvenli, kaliteli ve zamanında teslim sağlıyoruz.</p>
+            <a href="proje2.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+    <!-- Proje 3 -->
+    <div class="project-card">
+        <img src="img/proje3.jpg" alt="Proje 3">
+        <div class="project-card-content">
+            <h3>Yenilenebilir Enerji Projesi</h3>
+            <p>Güneş enerjisi sistemi ile yıllık %40 enerji tasarrufu sağlandı.</p>
+            <a href="proje3.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+    <!-- Proje 4 -->
+    <div class="project-card">
+        <img src="img/proje4.jpg" alt="Proje 4">
+        <div class="project-card-content">
+            <h3>IoT ve Sensör Projesi</h3>
+            <p>Endüstriyel IoT sistemi ile üretim verileri gerçek zamanlı izleniyor.</p>
+            <a href="proje4.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+    <!-- Proje 5 -->
+    <div class="project-card">
+        <img src="img/proje5.jpg" alt="Proje 5">
+        <div class="project-card-content">
+            <h3>Robotik Sistemler Projesi</h3>
+            <p>Hassas üretim için robotik otomasyon kuruldu.</p>
+            <a href="proje5.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+    <!-- Proje 6 -->
+    <div class="project-card">
+        <img src="img/proje6.jpg" alt="Proje 6">
+        <div class="project-card-content">
+            <h3>Akıllı Üretim Projesi</h3>
+            <p>Otomatik üretim hatları ile üretim kapasitesi %50 artırıldı.</p>
+            <a href="proje6.html" class="project-btn">Detaylı Bilgi</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2025 <span>Erben Mühendislik</span> | Tüm hakları saklıdır.
+</footer>
+
+</body>
+</html>
